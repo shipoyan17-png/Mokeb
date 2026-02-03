@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره موکب - موکب پیامبر اعظم</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazir-font@30.1.0/dist/font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Vazir, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a5f23 0%, #0d3011 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 15px;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #d4af37, #ffd700, #d4af37);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .title {
+            font-size: 1.9rem;
+            color: #1a5f23;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+
+        .empty-space {
+            height: 80px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            border: 2px dashed #d4af37;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-style: italic;
+        }
+        
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 900px) {
+            .info-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+            padding: 25px;
+            border: 2px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.25s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            border-color: #d4af37;
+        }
+        
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 6px;
+        }
+        
+        .info-card:nth-child(1)::before { background: linear-gradient(90deg, #3498db, #2980b9); }
+        .info-card:nth-child(2)::before { background: linear-gradient(90deg, #2ecc71, #27ae60); }
+        .info-card:nth-child(3)::before { background: linear-gradient(90deg, #9b59b6, #8e44ad); }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1a5f23;
+        }
+        
+        .info-card:nth-child(1) .card-icon { color: #3498db; }
+        .info-card:nth-child(2) .card-icon { color: #27ae60; }
+        .info-card:nth-child(3) .card-icon { color: #9b59b6; }
+        
+        .card-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 700;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4af37;
+        }
+        
+        .card-content {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.7;
+            text-align: justify;
+            flex-grow: 1;
+        }
+        
+        .card-id {
+            direction: ltr;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a5f23;
+            background: white;
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 2px solid #d4af37;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        
+        .card-id:hover {
+            background: #fff8e1;
+            transform: scale(1.02);
+        }
+        
+        .card-id i {
+            color: #d4af37;
+        }
+        
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a5f23, #2e8b57);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            border: 2px solid #d4af37;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #2e8b57, #1a5f23);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+            font-size: 0.85rem;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        /* رسپانسیو */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 15px auto;
+            }
+            
+            .title {
+                font-size: 1.7rem;
+            }
+            
+            .info-card {
+                padding: 20px;
+            }
+            
+            .back-button {
+                min-width: 180px;
+                padding: 10px 25px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .title {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .card-title {
+                font-size: 1.2rem;
+            }
+            
+            .card-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">درباره موکب پیامبر اعظم</h1>
+            <p class="subtitle">معرفی، اهداف و نحوه تشکیل موکب (دهه هشتادی‌ها)</p>
+        </div>
+        
+        
+        <div class="empty-space">
+            <i class="fas fa-info-circle" style="margin-left: 10px;"></i>
+            أبشِروا بالمهديِّ ، رجُلٍ مِن قريشٍ مِن عِترتي ، يخرُجُ فِي اخْتِلافٍ من النّاسِ و زَلْزالٍ ، فيَمْلأُ الأرضَ قِسْطا و عَدلاً كما مُلِئتْ ظُلما و جَورا
+        </div>
+        
+       
+        <div class="info-cards">
+            
+            <div class="info-card">
+                <div class="card-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="card-title">نحوه تشکیل شدن موکب</h3>
+                <div class="card-content">
+                    چند تن از نوجوانان دهه هشتادی، با روحیه‌ای جهادی و بر پایه رفاقت، همدلی و دغدغه خدمت، با کمک مشارکت‌ها و کمک‌های مردمی، اقدام به تأسیس موکب پیامبر اعظم (ص) نمودند.
+                </div>
+            </div>
+            
+            
+            <div class="info-card">
+                <div class="card-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3 class="card-title">هدف تشکیل موکب</h3>
+                <div class="card-content">
+                    این موکب با هدف خدمت‌رسانی خالصانه به زائران امام زمان ، ترویج فرهنگ ایثار و مسئولیت‌پذیری اجتماعی و تقویت نقش نسل جوان در فعالیت‌های مردمی و فرهنگی شکل گرفته و تلاش دارد در مسیر ارزش‌های دینی و انقلابی گام بردارد.
+                </div>
+            </div>
+            
+         
+            <div class="info-card">
+                <div class="card-icon">
+                    <i class="fas fa-broadcast-tower"></i>
+                </div>
+                <h3 class="card-title">آیدی کانال ایتا</h3>
+                <div class="card-content">
+                    برای اطلاع از آخرین اخبار، برنامه‌ها و فعالیت‌های موکب پیامبر اعظم (ص)، می‌توانید به کانال رسمی ما در پیام‌رسان ایتا مراجعه کنید.
+                </div>
+                <div class="card-id" onclick="copyToClipboard('@mokeb_payambarazam')">
+                    <i class="far fa-copy"></i>
+                    <span>@mokeb_payambarazam</span>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="back-button-container">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-home"></i> بازگشت به صفحه اصلی
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>© ۱۴۰۴ - موکب پیامبر اعظم (دهه هشتادی‌ها)</p>
+            <p>همراهی شما افتخار ماست</p>
+        </div>
+    </div>
+
+    <script>
+        
+        function copyToClipboard(text) {
+            
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            
+            
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999); // برای موبایل
+            
+
+            document.execCommand('copy');
+            
+            
+            document.body.removeChild(tempInput);
+            
+            
+            showCopyNotification(text);
+        }
+        
+        
+        function showCopyNotification(text) {
+            
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #4CAF50, #2E7D32);
+                color: white;
+                padding: 12px 20px;
+                border-radius: 50px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+                z-index: 1000;
+                font-size: 1rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                animation: fadeInOut 1.8s ease-in-out;
+            `;
+            
+            notification.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                آیدی "${text}" کپی شد
+            `;
+            
+            document.body.appendChild(notification);
+            
+            
+            setTimeout(() => {
+                notification.style.animation = 'fadeOut 0.4s ease-out forwards';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 400);
+            }, 1400);
+        }
+        
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: translateX(-50%) translateY(-15px); }
+                15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                100% { opacity: 0; transform: translateX(-50%) translateY(-15px); }
+            }
+            
+            @keyframes fadeOut {
+                0% { opacity: 1; }
+                100% { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+
+        document.querySelector('.card-id').addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.12)';
+        });
+        
+        document.querySelector('.card-id').addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
+        });
+        
+        document.querySelector('.card-id').addEventListener('click', function() {
+            this.style.background = '#e8f5e9';
+            this.style.borderColor = '#4CAF50';
+            setTimeout(() => {
+                this.style.background = '';
+                this.style.borderColor = '';
+            }, 400);
+        });
+        
+
+        document.querySelector('.back-button').addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+        });
+        
+        document.querySelector('.back-button').addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+        
+      
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'b' || event.key === 'B') {
+                window.location.href = 'index.html';
+            }
+        });
+        
+        
+        document.querySelectorAll('.info-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+    </script>
+</body>
+</html>
