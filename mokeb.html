@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زمان برگزاری موکب - موکب پیامبر اعظم</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazir-font@30.1.0/dist/font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Vazir, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a5f23 0%, #0d3011 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            border: 3px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #d4af37, #ffd700, #d4af37);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .title {
+            font-size: 2.2rem;
+            color: #1a5f23;
+            margin-bottom: 10px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        
+        .main-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 900px) {
+            .main-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        .status-container {
+            background: linear-gradient(135deg, #f0f9f0 0%, #e1f5e1 100%);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .status-title {
+            font-size: 1.5rem;
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .checkmark {
+            color: #4caf50;
+            font-size: 1.8rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .timer-container {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 20px;
+            padding: 20px;
+            border: 2px solid rgba(33, 150, 243, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timer-title {
+            font-size: 1.5rem;
+            color: #1565c0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .time-unit {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            border: 2px solid #d4af37;
+            transition: all 0.3s ease;
+        }
+        
+        .time-unit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+        }
+        
+        .time-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1a5f23;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .time-label {
+            font-size: 1rem;
+            color: #666;
+            display: block;
+        }
+        
+        .countdown-text {
+            font-size: 1.1rem;
+            color: #555;
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border-right: 3px solid #d4af37;
+        }
+        
+        .announcements-container {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            border-radius: 20px;
+            padding: 25px;
+            border: 2px solid rgba(255, 193, 7, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+        }
+        
+        .announcements-title {
+            font-size: 1.6rem;
+            color: #ff8f00;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255, 193, 7, 0.3);
+        }
+        
+        .announcements-title i {
+            color: #ff8f00;
+        }
+        
+        .announcements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        @media (max-width: 700px) {
+            .announcements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .announcement-item {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            border-right: 4px solid #d4af37;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .announcement-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .announcement-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .announcement-header i {
+            color: #1a5f23;
+            font-size: 1.2rem;
+        }
+        
+        .announcement-text {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        
+        .announcement-date {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .message-container {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: center;
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        .message-title {
+            font-size: 1.6rem;
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        
+        .message-text {
+            font-size: 1.2rem;
+            color: #1b5e20;
+            line-height: 1.5;
+        }
+        
+        .back-button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a5f23, #2e8b57);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #d4af37;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            min-width: 220px;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #2e8b57, #1a5f23);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9rem;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 15px auto;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .time-value {
+                font-size: 1.8rem;
+            }
+            
+            .back-button {
+                min-width: 200px;
+                padding: 10px 25px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">هر سه شنبه بلوار پیامبر اعظم</h1>
+            <p class="subtitle">زمان‌بندی و اطلاعیه‌های موکب پیامبر اعظم (دهه هشتادی‌ها)</p>
+        </div>
+        
+        <div class="main-row">
+            <div class="status-container">
+                <h2 class="status-title">
+                    وضعیت این هفته
+                    <i class="fas fa-check-circle checkmark"></i>
+                </h2>
+                <p id="status-text" style="color: #444; font-size: 1.1rem; margin-top: 5px;">برگزار می‌شود</p>
+            </div>
+            
+            <div class="timer-container">
+                <h2 class="timer-title">زمان باقی‌مانده تا برگزاری موکب</h2>
+                <div class="countdown">
+                    <div class="time-unit">
+                        <span id="days" class="time-value">0</span>
+                        <span class="time-label">روز</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="hours" class="time-value">0</span>
+                        <span class="time-label">ساعت</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="minutes" class="time-value">0</span>
+                        <span class="time-label">دقیقه</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="seconds" class="time-value">0</span>
+                        <span class="time-label">ثانیه</span>
+                    </div>
+                </div>
+                <div id="countdown-text" class="countdown-text">در حال محاسبه زمان...</div>
+            </div>
+        </div>
+        
+        <div id="active-message" class="message-container">
+            <h3 class="message-title">موکب در حال برگزاری</h3>
+            <p class="message-text">موکب پیامبر اعظم از ساعت <strong>۱۴:۰۰</strong> تا <strong>۱۹:۰۰</strong> برقرار است</p>
+            <p class="message-text" style="margin-top: 10px; color: #1a5f23; font-weight: 600;">هم اکنون می‌توانید به موکب مراجعه کنید</p>
+        </div>
+        
+        <div class="announcements-container">
+            <h2 class="announcements-title">
+                <i class="fas fa-bullhorn"></i>
+                آدرس موکب 
+            </h2>
+            <div class="announcements-grid">
+                <div class="announcement-item">
+                    <div class="announcement-header">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>جهت اطلاع دقیق تر از وضعیت موکب به کانال مراجعه کنید</strong>
+                    </div>
+                    <p class="announcement-text">آدرس کانال ایتا : @mokeb_payambarazam</p>
+                    <div class="announcement-date"></div>
+                </div>
+                
+                <div class="announcement-item">
+                    <div class="announcement-header">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <strong>آدرس موکب</strong>
+                    </div>
+                    <p class="announcement-text">بلوار پیامبر اعظم عمود 55</p>
+                    <div class="announcement-date"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-button-container">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-home"></i> بازگشت به صفحه اصلی
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>© ۱۴۰۴ - موکب پیامبر اعظم (دهه هشتادی‌ها)</p>
+            <p></p>
+        </div>
+    </div>
+
+    <script>
+        function gregorianToJalali(gy, gm, gd) {
+            var g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+            var jy = (gy <= 1600) ? 0 : 979;
+            gy -= (gy <= 1600) ? 621 : 1600;
+            var gy2 = (gm > 2) ? (gy + 1) : gy;
+            var days = (365 * gy) + parseInt((gy2 + 3) / 4) - parseInt((gy2 + 99) / 100) + parseInt((gy2 + 399) / 400) - 80 + gd + g_d_m[gm - 1];
+            jy += 33 * parseInt(days / 12053);
+            days %= 12053;
+            jy += 4 * parseInt(days / 1461);
+            days %= 1461;
+            jy += parseInt((days - 1) / 365);
+            if (days > 365) days = (days - 1) % 365;
+            var jm = (days < 186) ? 1 + parseInt(days / 31) : 7 + parseInt((days - 186) / 30);
+            var jd = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
+            return [jy, jm, jd];
+        }
+
+        function jalaliToGregorian(jy, jm, jd) {
+            jy += 1595;
+            var days = -355668 + (365 * jy) + (parseInt(jy / 33) * 8) + parseInt(((jy % 33) + 3) / 4) + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+            var gy = 400 * parseInt(days / 146097);
+            days %= 146097;
+            if (days > 36524) {
+                gy += 100 * parseInt(--days / 36524);
+                days %= 36524;
+                if (days >= 365) days++;
+            }
+            gy += 4 * parseInt(days / 1461);
+            days %= 1461;
+            if (days > 365) {
+                gy += parseInt((days - 1) / 365);
+                days = (days - 1) % 365;
+            }
+            var gd = days + 1;
+            var sal_a = [0, 31, ((gy % 4 == 0 && gy % 100 != 0) || (gy % 400 == 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            for (var gm = 0; gm < 13; gm++) {
+                var v = sal_a[gm];
+                if (gd <= v) break;
+                gd -= v;
+            }
+            return [gy, gm, gd];
+        }
+
+        function getJalaliDayOfWeek(jy, jm, jd) {
+            const [gy, gm, gd] = jalaliToGregorian(jy, jm, jd);
+            const date = new Date(gy, gm - 1, gd);
+            const dayOfWeek = date.getDay();
+            return (dayOfWeek + 1) % 7;
+        }
+
+        function getNextWednesday() {
+            const now = new Date();
+            const currentGy = now.getFullYear();
+            const currentGm = now.getMonth() + 1;
+            const currentGd = now.getDate();
+            const currentHour = now.getHours();
+            
+            const [currentJy, currentJm, currentJd] = gregorianToJalali(currentGy, currentGm, currentGd);
+            const todayWeekDay = getJalaliDayOfWeek(currentJy, currentJm, currentJd);
+            
+            if (todayWeekDay === 3) {
+                if (currentHour < 14) {
+                    return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 14, 0, 0);
+                }
+                else if (currentHour >= 14 && currentHour < 19) {
+                    return null;
+                }
+                else {
+                    const nextWednesday = new Date(now);
+                    nextWednesday.setDate(now.getDate() + 7);
+                    nextWednesday.setHours(14, 0, 0, 0);
+                    return nextWednesday;
+                }
+            }
+            
+            let daysToAdd;
+            if (todayWeekDay < 3) {
+                daysToAdd = 3 - todayWeekDay;
+            } else {
+                daysToAdd = (7 - todayWeekDay) + 3;
+            }
+            
+            const nextWednesday = new Date(now);
+            nextWednesday.setDate(now.getDate() + daysToAdd);
+            nextWednesday.setHours(14, 0, 0, 0);
+            
+            const nextGy = nextWednesday.getFullYear();
+            const nextGm = nextWednesday.getMonth() + 1;
+            const nextGd = nextWednesday.getDate();
+            const [nextJy, nextJm, nextJd] = gregorianToJalali(nextGy, nextGm, nextGd);
+            const nextWeekDay = getJalaliDayOfWeek(nextJy, nextJm, nextJd);
+            
+            if (nextWeekDay !== 3) {
+                nextWednesday.setDate(nextWednesday.getDate() + 7);
+            }
+            
+            return nextWednesday;
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const nextWednesday = getNextWednesday();
+            
+            if (nextWednesday === null) {
+                document.getElementById('active-message').style.display = 'block';
+                document.getElementById('status-text').textContent = 'در حال برگزاری';
+                document.getElementById('status-text').style.color = '#2e7d32';
+                document.getElementById('status-text').style.fontWeight = '600';
+                document.querySelector('.timer-container').style.display = 'none';
+                document.querySelector('.main-row').style.gridTemplateColumns = '1fr';
+                return;
+            }
+            
+            document.getElementById('active-message').style.display = 'none';
+            document.querySelector('.timer-container').style.display = 'block';
+            
+            const timeDiff = nextWednesday.getTime() - now.getTime();
+            
+            if (timeDiff <= 0) {
+                const newNextWednesday = new Date(nextWednesday);
+                newNextWednesday.setDate(nextWednesday.getDate() + 7);
+                const newTimeDiff = newNextWednesday.getTime() - now.getTime();
+                updateDisplay(newTimeDiff);
+            } else {
+                updateDisplay(timeDiff);
+            }
+        }
+        
+        function updateDisplay(timeDiff) {
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            const statusText = document.getElementById('status-text');
+            if (days > 1) {
+                statusText.textContent = 'برگزار می‌شود';
+                statusText.style.color = '#444';
+            } else if (days === 1) {
+                statusText.textContent = 'فردا برگزار می‌شود';
+                statusText.style.color = '#ff9800';
+                statusText.style.fontWeight = '600';
+            } else if (days === 0 && hours > 1) {
+                statusText.textContent = 'امروز برگزار می‌شود';
+                statusText.style.color = '#ff5722';
+                statusText.style.fontWeight = '600';
+            } else if (days === 0 && hours <= 1) {
+                statusText.textContent = 'به زودی برگزار می‌شود';
+                statusText.style.color = '#f44336';
+                statusText.style.fontWeight = '600';
+            }
+            
+            const countdownText = document.getElementById('countdown-text');
+            if (days > 0) {
+                countdownText.textContent = `${days} روز و ${hours} ساعت و ${minutes} دقیقه مانده`;
+            } else if (hours > 0) {
+                countdownText.textContent = `${hours} ساعت و ${minutes} دقیقه مانده`;
+            } else if (minutes > 0) {
+                countdownText.textContent = `${minutes} دقیقه و ${seconds} ثانیه مانده`;
+            } else {
+                countdownText.textContent = `${seconds} ثانیه مانده`;
+            }
+            
+            if (days === 0 && hours < 24) {
+                countdownText.style.color = '#d32f2f';
+                countdownText.style.fontWeight = '600';
+            } else {
+                countdownText.style.color = '#555';
+                countdownText.style.fontWeight = 'normal';
+            }
+        }
+        
+        function isMokebActive() {
+            const now = new Date();
+            const currentGy = now.getFullYear();
+            const currentGm = now.getMonth() + 1;
+            const currentGd = now.getDate();
+            const [currentJy, currentJm, currentJd] = gregorianToJalali(currentGy, currentGm, currentGd);
+            const currentWeekDay = getJalaliDayOfWeek(currentJy, currentJm, currentJd);
+            const currentHour = now.getHours();
+            
+            return currentWeekDay === 3 && currentHour >= 14 && currentHour < 19;
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        if (isMokebActive()) {
+            document.querySelector('.status-title').innerHTML = `وضعیت این هفته <i class="fas fa-play-circle checkmark"></i>`;
+            document.getElementById('status-text').textContent = 'در حال برگزاری';
+            document.getElementById('status-text').style.color = '#2e7d32';
+            document.getElementById('status-text').style.fontWeight = '600';
+        }
+        
+        document.querySelectorAll('.time-unit').forEach(unit => {
+            unit.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.12)';
+            });
+            
+            unit.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.08)';
+            });
+        });
+        
+        document.querySelectorAll('.announcement-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        document.querySelector('.back-button').addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+        });
+        
+        document.querySelector('.back-button').addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>
