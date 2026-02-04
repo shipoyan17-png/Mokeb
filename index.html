@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موکب پیامبر اعظم (دهه هشتادی‌ها)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazir-font@30.1.0/dist/font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Vazir, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a5f23 0%, #0d3011 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to left, #d4af37, #ffd700, #d4af37);
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+        }
+        
+
+        .logo-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 6px solid #d4af37;
+            background: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .logo-circle::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
+            border-radius: 50%;
+            background: linear-gradient(45deg, #d4af37, #ffd700, #d4af37);
+            z-index: -1;
+            opacity: 0.3;
+            animation: rotate 15s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+      
+        .logo-fallback {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a5f23, #2e8b57);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .title {
+            font-size: 2.8rem;
+            color: #1a5f23;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 900;
+            line-height: 1.4;
+            padding: 10px 20px;
+            border-radius: 15px;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            position: relative;
+            margin-top: 10px;
+        }
+        
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 20%;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to left, #d4af37, #ffd700, #d4af37);
+            border-radius: 3px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+        
+        
+        .datetime-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 2px solid rgba(212, 175, 55, 0.5);
+        }
+        
+        .datetime-title {
+            font-size: 1.5rem;
+            color: #1a5f23;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .datetime-title i {
+            color: #d4af37;
+        }
+        
+        .datetime-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            font-size: 1.3rem;
+        }
+        
+        .time-box, .shamsi-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #dee2e6;
+        }
+        
+        .time-label, .shamsi-label {
+            font-size: 1.2rem;
+            color: #1a5f23;
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 700;
+        }
+        
+        .time-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2980b9;
+            direction: ltr;
+            display: block;
+        }
+        
+        .date-section {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .date-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .date-label {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .date-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a5f23;
+            display: block;
+        }
+        
+        .month-value {
+            color: #c0392b;
+        }
+        
+        
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .menu-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-color: #d4af37;
+        }
+        
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 8px;
+        }
+        
+        .menu-card:nth-child(1)::before { background: linear-gradient(to left, #3498db, #2980b9); }
+        .menu-card:nth-child(2)::before { background: linear-gradient(to left, #e74c3c, #c0392b); }
+        .menu-card:nth-child(3)::before { 
+            background: linear-gradient(to left, #9b59b6, #8e44ad); 
+            animation: pulse 2s infinite;
+        }
+        .menu-card:nth-child(4)::before { 
+            background: linear-gradient(to left, #1abc9c, #16a085); 
+            animation: pulse 2s infinite;
+        }
+        .menu-card:nth-child(5)::before { 
+            background: linear-gradient(to left, #f39c12, #e67e22); 
+            animation: pulse 2s infinite;
+        }
+        .menu-card:nth-child(6)::before { 
+            background: linear-gradient(to left, #34495e, #2c3e50); 
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        
+        .menu-title {
+            font-size: 1.6rem;
+            color: #1a5f23;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .menu-title i {
+            font-size: 1.8rem;
+        }
+        
+        .menu-card:nth-child(1) .menu-title i { color: #3498db; }
+        .menu-card:nth-child(2) .menu-title i { color: #e74c3c; }
+        .menu-card:nth-child(3) .menu-title i { 
+            color: #9b59b6; 
+            animation: bounce 1s infinite;
+        }
+        .menu-card:nth-child(4) .menu-title i { 
+            color: #1abc9c; 
+            animation: bounce 1s infinite;
+        }
+        .menu-card:nth-child(5) .menu-title i { 
+            color: #f39c12; 
+            animation: bounce 1s infinite;
+        }
+        .menu-card:nth-child(6) .menu-title i { 
+            color: #34495e; 
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .menu-content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+        }
+        
+        .placeholder-text {
+            color: #777;
+            font-size: 1.1rem;
+            text-align: center;
+            font-style: italic;
+            padding: 20px;
+        }
+        
+        .menu-card:nth-child(1) .placeholder-text {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        .menu-card:nth-child(2) .placeholder-text {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .menu-card:nth-child(3) .placeholder-text {
+            color: #8e44ad;
+            font-weight: 600;
+        }
+        
+        .menu-card:nth-child(4) .placeholder-text {
+            color: #16a085;
+            font-weight: 600;
+        }
+        
+        .menu-card:nth-child(5) .placeholder-text {
+            color: #e67e22;
+            font-weight: 600;
+        }
+        
+        .menu-card:nth-child(6) .placeholder-text {
+            color: #34495e;
+            font-weight: 600;
+        }
+        
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            padding: 20px;
+        }
+        
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .logo-circle {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .datetime-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-card {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-circle {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <header class="header">
+            <div class="logo-container">
+
+                <div class="logo-circle">
+
+                    <img src="logo.png" alt="لوگوی موکب" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-fallback" style="display: none;">
+                        موکب پیامبر اعظم
+                    </div>
+                </div>
+                <div>
+                    <h1 class="title">موکب پیامبر اعظم</h1>
+                    <p class="subtitle">(دهه هشتادی ها)</p>
+                </div>
+            </div>
+        </header>
+        
+
+        <div class="datetime-card">
+            <h2 class="datetime-title"><i class="fas fa-clock"></i> زمان دقیق و تاریخ</h2>
+            <div class="datetime-container">
+                <div class="time-box">
+                    <span class="time-label">ساعت دقیق</span>
+                    <span id="live-time" class="time-value">--:--:--</span>
+                </div>
+                <div class="shamsi-box">
+                    <span class="shamsi-label">تاریخ شمسی</span>
+                    <div class="date-section">
+                        <span class="date-label">روز</span>
+                        <span id="shamsi-day" class="date-value">--</span>
+                    </div>
+                    <div class="date-section">
+                        <span class="date-label">ماه</span>
+                        <span id="shamsi-month" class="date-value month-value">--</span>
+                    </div>
+                    <div class="date-section">
+                        <span class="date-label">سال</span>
+                        <span id="shamsi-year" class="date-value">--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="menu-container">
+
+            <div class="menu-card" data-link="gallery.html">
+                <h3 class="menu-title"><i class="fas fa-file-alt"></i> گزارش‌ها، تصاویر و ویدیوهای هفته گذشته</h3>
+                <div class="menu-content">
+                    <p class="placeholder-text">برای مشاهده گالری تصاویر و ویدیوهای موکب کلیک کنید</p>
+                </div>
+            </div>
+            
+
+            <div class="menu-card" data-link="paziraei.html">
+                <h3 class="menu-title"><i class="fas fa-utensils"></i> پذیرایی‌های این هفته</h3>
+                <div class="menu-content">
+                    <p class="placeholder-text">برای مشاهده منوی پذیرایی این هفته کلیک کنید</p>
+                </div>
+            </div>
+            
+
+            <div class="menu-card" data-link="mokeb.html">
+                <h3 class="menu-title"><i class="fas fa-calendar-alt"></i> زمان برگزاری موکب و اطلاعیه‌ها</h3>
+                <div class="menu-content">
+                    <p class="placeholder-text">برای مشاهده زمان دقیق برگزاری و اطلاعیه‌ها کلیک کنید</p>
+                </div>
+            </div>
+            
+
+            <div class="menu-card" data-link="mosharekat.html">
+                <h3 class="menu-title"><i class="fas fa-hand-holding-heart"></i> اعطای نذر، مشارکت در ثواب جاریه و هزینه‌های اجرایی برنامه</h3>
+                <div class="menu-content">
+                    <p class="placeholder-text">برای مشارکت مالی و کمک به موکب کلیک کنید</p>
+                </div>
+            </div>
+            
+
+            <div class="menu-card" data-link="poshtibani.html">
+                <h3 class="menu-title"><i class="fas fa-comments"></i> ارتباط با پشتیبانی</h3>
+                <div class="menu-content">
+                    <p class="placeholder-text">برای ارتباط با پشتیبانی کلیک کنید</p>
+                </div>
+            </div>
+            
+
+            <div class="menu-card" data-link="info.html">
+                <h3 class="menu-title"><i class="fas fa-info-circle"></i> درباره موکب ما</h3>
+                <div class="menu-content">
+                    <p class="placeholder-text">برای آشنایی با اهداف و فعالیت‌های موکب کلیک کنید</p>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="footer">
+            <p>© ۱۴۰۴ - موکب پیامبر اعظم (دهه هشتادی‌ها) - کلیه حقوق محفوظ است</p>
+            <p>طراحی شده جهت خدمت به زائران امام زمان❤️</p>
+        </div>
+    </div>
+
+    <script>
+
+        function updateDateTime() {
+            const now = new Date();
+            
+           
+            const tehranOffset = 3.5 * 60 * 60 * 1000; // 3:30 ساعت به میلی‌ثانیه
+            const tehranTime = new Date(now.getTime() + tehranOffset);
+            
+            
+            const timeElement = document.getElementById('live-time');
+            const hours = String(tehranTime.getUTCHours()).padStart(2, '0');
+            const minutes = String(tehranTime.getUTCMinutes()).padStart(2, '0');
+            const seconds = String(tehranTime.getUTCSeconds()).padStart(2, '0');
+            timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+            
+             Intl.DateTimeFormat
+            updateShamsiDate(now);
+        }
+        
+Intl.DateTimeFormat
+        function updateShamsiDate(date) {
+            try {
+                
+                const formatter = new Intl.DateTimeFormat(
+                    'fa-IR-u-ca-persian',
+                    {
+                        timeZone: 'Asia/Tehran',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    }
+                );
+                
+
+                const parts = formatter.formatToParts(date);
+                
+
+                let day, month, year;
+                
+                for (const part of parts) {
+                    switch (part.type) {
+                        case 'day':
+                            day = part.value;
+                            break;
+                        case 'month':
+                            month = part.value;
+                            break;
+                        case 'year':
+                            year = part.value;
+                            break;
+                    }
+                }
+
+                if (day) {
+                    day = convertPersianToLatin(day);
+                }
+                
+                if (year) {
+                    year = convertPersianToLatin(year);
+                }
+                
+                
+                if (day) document.getElementById('shamsi-day').textContent = day;
+                if (month) document.getElementById('shamsi-month').textContent = month;
+                if (year) document.getElementById('shamsi-year').textContent = year;
+                
+            } catch (error) {
+                console.error('خطا در نمایش تاریخ شمسی:', error);
+                
+                fallbackShamsiDate(date);
+            }
+        }
+        
+
+        function convertPersianToLatin(persianNumber) {
+            const persianDigits = '۰۱۲۳۴۵۶۷۸۹';
+            const latinDigits = '0123456789';
+            
+            let result = '';
+            for (let i = 0; i < persianNumber.length; i++) {
+                const char = persianNumber[i];
+                const index = persianDigits.indexOf(char);
+                result += index !== -1 ? latinDigits[index] : char;
+            }
+            
+            return result;
+        }
+        
+        
+        function fallbackShamsiDate(date) {
+            const gYear = date.getFullYear();
+            const gMonth = date.getMonth() + 1;
+            const gDay = date.getDate();
+            
+
+            const gDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            
+            if ((gYear % 4 === 0 && gYear % 100 !== 0) || gYear % 400 === 0) {
+                gDaysInMonth[1] = 29;
+            }
+            
+            let gDayOfYear = 0;
+            for (let i = 0; i < gMonth - 1; i++) {
+                gDayOfYear += gDaysInMonth[i];
+            }
+            gDayOfYear += gDay;
+            
+            let shamsiYear, shamsiMonth, shamsiDay;
+            
+            if (gDayOfYear <= 79) {
+                shamsiYear = gYear - 621;
+                if (gDayOfYear > 19) {
+                    shamsiMonth = 10;
+                    shamsiDay = gDayOfYear - 19;
+                } else {
+                    shamsiMonth = 9;
+                    shamsiDay = gDayOfYear + 11;
+                }
+            } else {
+                let remDays = gDayOfYear - 79;
+                shamsiYear = gYear - 620;
+                
+                if (remDays <= 186) {
+                    shamsiMonth = Math.floor((remDays - 1) / 31) + 1;
+                    shamsiDay = ((remDays - 1) % 31) + 1;
+                } else {
+                    remDays -= 186;
+                    shamsiMonth = Math.floor((remDays - 1) / 30) + 7;
+                    shamsiDay = ((remDays - 1) % 30) + 1;
+                }
+            }
+            
+            const shamsiMonths = [
+                'فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور',
+                'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'
+            ];
+            
+            document.getElementById('shamsi-day').textContent = shamsiDay;
+            document.getElementById('shamsi-month').textContent = shamsiMonths[shamsiMonth-1];
+            document.getElementById('shamsi-year').textContent = shamsiYear;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+        
+        // لینک کردن کارت‌ها به صفحات مربوطه
+        document.querySelectorAll('.menu-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const link = this.getAttribute('data-link');
+                
+                
+                if (link && link !== '#') {
+
+                    this.style.transform = 'scale(0.95)';
+                    this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                    
+
+                    setTimeout(() => {
+                        window.location.href = link;
+                    }, 150);
+                } else if (link === '#') {
+                    
+                    this.style.transform = 'scale(0.95)';
+                    this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                    
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.boxShadow = '';
+                        alert('این بخش به زودی فعال خواهد شد.');
+                    }, 150);
+                }
+            });
+            
+            // افکت hover
+            card.addEventListener('mouseenter', function() {
+                if (this.getAttribute('data-link') && this.getAttribute('data-link') !== '#') {
+                    this.style.cursor = 'pointer';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+        
+
+        document.addEventListener('keydown', function(event) {
+
+            if (event.key === 'g' || event.key === 'G') {
+                window.location.href = 'gallery.html';
+            }
+
+            else if (event.key === 'z' || event.key === 'Z') {
+                window.location.href = 'paziraei.html';
+            }
+            
+            else if (event.key === 'm' || event.key === 'M') {
+                window.location.href = 'mokeb.html';
+            }
+            
+            else if (event.key === 'p' || event.key === 'P') {
+                window.location.href = 'mosharekat.html';
+            }
+            
+            else if (event.key === 's' || event.key === 'S') {
+                window.location.href = 'poshtibani.html';
+            }
+
+            else if (event.key === 'i' || event.key === 'I') {
+                window.location.href = 'info.html';
+            }
+        });
+    </script>
+</body>
+</html>
